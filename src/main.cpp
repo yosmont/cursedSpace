@@ -7,6 +7,9 @@
 
 int main(int ac, char **av, char **env)
 {
+    (void)ac;
+    (void)av;
+    (void)env;
     std::srand(std::time(nullptr));
     initscr();
     layeredCurses::LayeredScene scene{std::vector<std::shared_ptr<layeredCurses::ALayer>>{

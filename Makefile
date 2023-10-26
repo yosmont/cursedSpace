@@ -6,13 +6,13 @@
 
 NAME	=	cursedSpace
 
-SRC	=	submodule/cursedLayer/src/ALayer.cpp	\
-		submodule/cursedLayer/src/LayeredScene	\
-		src/StarLayer.cpp						\
-		src/SpaceshipLayer.cpp					\
+SRC	=	submodule/cursedLayer/src/ALayer.cpp		\
+		submodule/cursedLayer/src/LayeredScene.cpp	\
+		src/StarLayer.cpp							\
+		src/SpaceshipLayer.cpp						\
 		src/main.cpp
 
-CFLAGS	+=	-Wall -Wextra -I"src/" -I"submodule/cursedLayer/src/" -lncurses
+CFLAGS	+=	-lncurses -Wall -Wextra -I"src/" -I"submodule/cursedLayer/src/"
 
 DFLAG	+=	-g
 
@@ -20,7 +20,7 @@ OBJ	=	$(SRC:.cpp=.o)
 
 %.o:%.cpp
 	@echo -e "\033[0;35m[core] [g++]\033[0m $< \033[0;31m▬▶\033[0m $@"
-	@g++ $< -c -o $@ $(CFLAGS)
+	@g++ $(CFLAGS) $< -c -o $@
 
 all:	core
 	@echo "┌─┐┌┐┌┌┬┐  ┌─┐┌─┐┌┬┐┌─┐┬┬  ┬┌┐┌┌─┐   ┬ ┬┌─┐┌┬┐┬"
@@ -29,7 +29,7 @@ all:	core
 
 core:		$(OBJ)
 	@echo -e "\033[0;35m[core] [g++]\033[0m $(OBJ) \033[0;31m▬▶\033[0m $(NAME)"
-	@g++ -o $(NAME) $(CFLAGS) $(OBJ)
+	@g++ $(CFLAGS) -o $(NAME) $(OBJ)
 
 clean:
 	@echo -e "\033[0;35m[core] [rm]\033[0m $(OBJ)"
