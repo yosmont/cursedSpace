@@ -1,9 +1,20 @@
 #include <ncurses.h>
 #include <random>
 #include <ctime>
+#include <signal.h>
+#include <future>
+#include <thread>
 #include "StarLayer.hpp"
 #include "SpaceshipLayer.hpp"
 #include "LayeredScene.hpp"
+
+std::promise<void> quit{};
+
+void sighandler(int sig)
+{
+    (void)sig;
+    quit.set_value();
+}
 
 int main(int ac, char **av, char **env)
 {
@@ -16,6 +27,7 @@ int main(int ac, char **av, char **env)
         std::make_shared<space::StarLayer>(),
         std::make_shared<space::SpaceshipLayer>()
     }};
-    scene.SceneLoop();
+    quit.get_future().wait();
+    scene.Exit();
     endwin();
 }
