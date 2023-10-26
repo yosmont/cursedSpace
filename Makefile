@@ -20,7 +20,7 @@ OBJ	=	$(SRC:.cpp=.o)
 
 %.o:%.cpp
 	@echo -e "\033[0;35m[core] [g++]\033[0m $< \033[0;31m▬▶\033[0m $@"
-	@g++ $(CFLAGS) $< -c -o $@
+	@g++ $< -c -o $@ $(CFLAGS)
 
 all:	core
 	@echo "┌─┐┌┐┌┌┬┐  ┌─┐┌─┐┌┬┐┌─┐┬┬  ┬┌┐┌┌─┐   ┬ ┬┌─┐┌┬┐┬"
@@ -29,7 +29,7 @@ all:	core
 
 core:		$(OBJ)
 	@echo -e "\033[0;35m[core] [g++]\033[0m $(OBJ) \033[0;31m▬▶\033[0m $(NAME)"
-	@g++ $(CFLAGS) -o $(NAME) $(OBJ)
+	@g++ -o $(NAME) $(OBJ) $(CFLAGS)
 
 clean:
 	@echo -e "\033[0;35m[core] [rm]\033[0m $(OBJ)"
