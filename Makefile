@@ -19,7 +19,7 @@ DFLAG	+=	-g
 OBJ	=	$(SRC:.cpp=.o)
 
 %.o:%.cpp
-	@echo -e "\033[0;35m[core] [g++]\033[0m $< \033[0;31m▬▶\033[0m $@"
+	@echo "\033[0;35m[core] [g++]\033[0m $< \033[0;31m-->\033[0m $@"
 	@g++ $< -c -o $@ $(CFLAGS)
 
 all:	core
@@ -28,18 +28,18 @@ all:	core
 	@echo "###########################"
 
 core:		$(OBJ)
-	@echo -e "\033[0;35m[core] [g++]\033[0m $(OBJ) \033[0;31m▬▶\033[0m $(NAME)"
+	@echo "\033[0;35m[core] [g++]\033[0m $(OBJ) \033[0;31m-->\033[0m $(NAME)"
 	@g++ -o $(NAME) $(OBJ) $(CFLAGS)
 
 clean:
-	@echo -e "\033[0;35m[core] [rm]\033[0m $(OBJ)"
+	@echo "\033[0;35m[core] [rm]\033[0m $(OBJ)"
 	@rm -f $(OBJ)
 	@echo "#######################"
 	@echo "### END CLEAN, YAM! ###"
 	@echo "#######################"
 
 fclean:		clean
-	@echo -e "\033[0;35m[core] [rm]\033[0m $(NAME)"
+	@echo "\033[0;35m[core] [rm]\033[0m $(NAME)"
 	@rm -f $(NAME)
 	@echo "##########################"
 	@echo "#### END FCLEAN, YAM! ####"
