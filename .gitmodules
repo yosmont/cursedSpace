@@ -1,0 +1,3 @@
+[submodule "Cursed Layer"]
+	path = submodule/cursedLayer
+	url = git@github.com:yosmont/cursedLayer.git
