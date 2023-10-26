@@ -17,7 +17,7 @@ bool space::StarLayer::Update(float deltaTime)
     if (CheckTimer(deltaTime)) {
         for (int i{0}; LINES > i; ++i) {
             _map[i].erase(_map[i].begin());
-            if (!_cycleBeforeStart && !(std::rand() % RNGOFSTAR))
+            if (!(_cycleBeforeStart + (i % GAP)) && !(std::rand() % RNGOFSTAR))
                 _map[i].push_back('*');
             else
                 _map[i].push_back((char)-1);
